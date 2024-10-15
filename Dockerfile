@@ -8,8 +8,9 @@ RUN apk add --no-cache curl
 RUN addgroup --gid 10014 choreo && \
     adduser --disabled-password --no-create-home --uid 10014 --ingroup choreo choreouser
 
-# Switch to the non-root user
-USER choreouser
+
+# Switch to the non-root user using UID
+USER 10014
 
 # Execute the curl command to invoke the given URL and output the response
 CMD ["sh", "-c", "curl \"$URL\""]
